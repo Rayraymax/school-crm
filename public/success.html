@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lead Submitted Successfully</title>
+  <link rel="stylesheet" href="success.css">
+</head>
+<body>
+  <div class="success-container">
+    <h1>✅ Lead Submitted Successfully</h1>
+    <p>Your school lead has been recorded.</p>
+    <img src="placeholder.png" alt="Success Image">
+    <button type="button" onclick="goToDashboard()">Go to Dashboard</button>
+    <button type="button" onclick="goToLogin()">Back to Login</button>
+  </div>
+
+  <script>
+    function goToDashboard() {
+      window.location.href = "dashboard.html";
+    }
+    function goToLogin() {
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

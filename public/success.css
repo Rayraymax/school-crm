@@ -1,0 +1,70 @@
+/* General Layout */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0fff4; /* light green background */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Success Card */
+.success-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  width: 400px;
+  text-align: center;
+}
+
+/* Header */
+.success-container h1 {
+  color: #28a745; /* green */
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* Paragraph */
+.success-container p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Image */
+.success-container img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+/* Buttons */
+.success-container button {
+  width: 45%;
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.success-container button:first-of-type {
+  background: #007BFF; /* blue */
+  color: white;
+}
+
+.success-container button:first-of-type:hover {
+  background: #0056b3;
+}
+
+.success-container button:last-of-type {
+  background: #6c757d; /* grey */
+  color: white;
+}
+
+.success-container button:last-of-type:hover {
+  background: #5a6268;
+}

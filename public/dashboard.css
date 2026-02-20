@@ -1,0 +1,237 @@
+/* General Layout */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: #f4f7fb; /* light background */
+  color: #333;
+  font-size: 18px; /* larger base font size */
+  line-height: 1.6;
+}
+
+/* Top Bar */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #007BFF, #00C6FF);
+  color: white;
+  padding: 18px 30px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+}
+
+header button {
+  margin-left: 10px;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #ffffff, #e6e6e6);
+  color: #007BFF;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+header button:hover {
+  background: linear-gradient(90deg, #f0f0f0, #dcdcdc);
+  transform: scale(1.05);
+}
+
+/* Sections */
+section {
+  margin: 20px;
+  background: #fff;
+  padding: 22px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+}
+
+th {
+  background: linear-gradient(90deg, #007BFF, #00C6FF);
+  color: #fff;
+  font-size: 17px;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #e6f0ff;
+  transition: background 0.3s ease;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 2px;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #007BFF, #00C6FF);
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Form Section */
+.form-section {
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid #ddd;
+  background: #fdfdfd;
+}
+
+/* Compact Grid Layout for Form */
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea,
+.form-grid button {
+  flex: 1 1 240px;
+  min-width: 200px;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 17px; /* enlarged text */
+  background: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Textarea Styling */
+.form-grid textarea {
+  flex: 1 1 100%;
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Glowing Focus Effect */
+.form-grid input:focus,
+.form-grid select:focus,
+.form-grid textarea:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.7);
+  outline: none;
+}
+
+/* File Upload Styling */
+#lead_image {
+  padding: 10px;
+  background: #f9f9f9;
+  border: 1px dashed #007BFF;
+  cursor: pointer;
+}
+
+#lead_image:hover {
+  background: #e6f0ff;
+}
+
+/* Buttons inside Form */
+.form-grid button[type="submit"] {
+  background: linear-gradient(90deg, #007BFF, #00C6FF);
+  color: white;
+}
+
+.form-grid button[type="submit"]:hover {
+  background: linear-gradient(90deg, #0056b3, #0096c7);
+}
+
+.form-grid button#deleteLeadBtn {
+  background: linear-gradient(90deg, #dc3545, #ff6b6b);
+  color: white;
+}
+
+.form-grid button#deleteLeadBtn:hover {
+  background: linear-gradient(90deg, #a71d2a, #e63946);
+}
+
+/* Table Row Highlighting by Interest Level */
+tr.interested { background-color: #d4edda; }
+tr.followup { background-color: #fff3cd; }
+tr.contacted { background-color: #cce5ff; }
+tr.meeting { background-color: #e2e3ff; }
+tr.closed { background-color: #d1ecf1; }
+tr.pending { background-color: #fefefe; }
+tr.notinterested { background-color: #f8d7da; }
+
+/* Responsive Table for Mobile */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px;
+    background: #fff;
+  }
+
+  td {
+    border: none;
+    padding: 10px;
+    text-align: left;
+    position: relative;
+    font-size: 16px;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+    color: #007BFF;
+  }
+}

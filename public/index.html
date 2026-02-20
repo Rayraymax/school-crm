@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>School CRM - Submit Lead</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="lead-container">
+    <h1>Submit School Lead</h1>
+    <form id="leadForm">
+      <label>School Name:</label>
+      <input type="text" name="school_name" placeholder="School Name" required>
+
+      <label>School Type:</label>
+      <select name="school_type">
+        <option value="">--Select--</option>
+        <option value="Primary">Primary</option>
+        <option value="Secondary">Secondary</option>
+        <option value="Private">Private</option>
+        <option value="Public">Public</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <input type="text" name="location" placeholder="Location">
+      <input type="text" name="contact_name" placeholder="Contact Name">
+
+      <label>Contact Role:</label>
+      <select name="contact_role">
+        <option value="">--Select--</option>
+        <option value="Principal">Principal</option>
+        <option value="Administrator">Administrator</option>
+        <option value="ICT Coordinator">ICT Coordinator</option>
+        <option value="Teacher">Teacher</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <input type="tel" name="phone" placeholder="Phone">
+      <input type="email" name="email" placeholder="Email">
+
+      <label>Date of Visit:</label>
+      <input type="date" name="visit_date">
+
+      <label>Interest Level:</label>
+      <select name="interest_level">
+        <option value="">--Select--</option>
+        <option value="Interested">Interested</option>
+        <option value="Needs Follow-up">Needs Follow-up</option>
+        <option value="Not Interested">Not Interested</option>
+      </select>
+
+      <textarea name="notes" placeholder="Notes"></textarea>
+
+      <label>Next Action:</label>
+      <select name="next_action">
+        <option value="">--Select--</option>
+        <option value="Call">Call</option>
+        <option value="Email">Email</option>
+        <option value="Meeting">Meeting</option>
+        <option value="Demo">Demo</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label>Upload Image:</label>
+      <input type="file" name="lead_image" accept="image/*"><br>
+
+      <label>Follow-up Date:</label>
+      <input type="date" name="follow_up_date">
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <button type="button" onclick="goToDashboard()">Back to Dashboard</button>
+    <button type="button" onclick="goToLogin()">Back to Login</button>
+  </div>
+
+<script>
+  document.getElementById('leadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    // ✅ Include JWT token in Authorization header
+    const token = localStorage.getItem('jwtToken');
+
+    const response = await fetch('http://localhost:5000/api/leads', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: formData
+    });
+
+    if (response.ok) {
+      // ✅ Show success confirmation before redirect
+      alert('🎉 Lead submitted successfully!');
+      window.location.href = "success.html";
+    } else {
+      const errorText = await response.text();
+      alert('Error submitting lead: ' + errorText);
+    }
+  });
+
+  function goToDashboard() {
+    window.location.href = "dashboard.html";
+  }
+
+  function goToLogin() {
+    window.location.href = "login.html";
+  }
+</script>
+</body>
+</html>

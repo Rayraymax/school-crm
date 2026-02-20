@@ -1,0 +1,71 @@
+/* General Layout */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Form Container */
+.lead-container {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  width: 400px;
+}
+
+.lead-container h1 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: #007BFF;
+  text-align: center;
+}
+
+/* Inputs & Selects */
+.lead-container input,
+.lead-container select,
+.lead-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Button */
+.lead-container button {
+  width: 100%;
+  padding: 10px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lead-container button:hover {
+  background: #0056b3;
+}
+/* Back to Dashboard Button */
+.lead-container button[type="button"] {
+  margin-top: 10px;
+  background: #6c757d; /* grey */
+}
+
+.lead-container button[type="button"]:hover {
+  background: #5a6268;
+}
+/* Back to Login Button */
+.lead-container button[type="button"]:last-of-type {
+  margin-top: 10px;
+  background: #28a745; /* green */
+}
+
+.lead-container button[type="button"]:last-of-type:hover {
+  background: #218838;
+}
