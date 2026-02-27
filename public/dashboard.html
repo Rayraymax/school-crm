@@ -3,7 +3,6 @@
 <head>
   <title>School CRM - Office Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="base.css">
 </head>
 <body>
   <h1>Office Dashboard</h1>
@@ -153,7 +152,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const API_BASE = "http://localhost:5000";
+  const API_BASE = "https://school-crm-backend.onrender.com";
   const token = localStorage.getItem('jwtToken');
   let currentUserRole = "guest";
   let allLeads = [];
