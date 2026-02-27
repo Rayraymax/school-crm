@@ -411,6 +411,104 @@ function addLeadRow(lead) {
   tableBody.appendChild(row);
 }
     loadLeads();
+    async function loadUsers() {
+  if (currentUserRole !== 'manager') {
+    document.getElementById('usersSection').style.display = 'none';
+    return;
+  }
+
+  const response = await fetch('/api/users', {
+    headers: { 'Authorization': `Bearer ${token}` }
+  });
+
+  const users = await response.json();
+  const tbody = document.querySelector('#usersTable tbody');
+  tbody.innerHTML = '';
+
+  users.forEach(user => {
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+      <td>${user.id}</td>
+      <td>${user.username}</td>
+      <td>${user.role}</td>
+      <td><button onclick="deleteUser(${user.id})">Delete</button></td>
+    `;
+
+    tbody.appendChild(row);
+  });
+}
+document.getElementById('addUserForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const username = document.getElementById('newUsername').value;
+  const password = document.getElementById('newPassword').value;
+  const role = document.getElementById('newRole').value;
+
+  const response = await fetch('/api/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ username, password, role })
+  });
+
+  if (response.ok) {
+    alert('User created successfully');
+    document.getElementById('addUserForm').reset();
+    loadUsers();
+  } else {
+    alert('Error creating user');
+  }
+});
+async function deleteUser(id) {
+  if (!confirm("Are you sure?")) return;
+
+  const response = await fetch(`/api/users/${id}`, {
+    method: 'DELETE',
+    headers: { 'Authorization': `Bearer ${token}` }
+  });
+
+  if (response.ok) {
+    loadUsers();
+  } else {
+    alert('Error deleting user');
+  }
+}
+loadUsers();
   </script>
+  <div class="form-section" id="usersSection">
+  <h3>User Management</h3>
+
+  <form id="addUserForm">
+    <input type="text" id="newUsername" placeholder="Username" required>
+    <input type="password" id="newPassword" placeholder="Password" required>
+
+    <select id="newRole">
+      <option value="marketer">Marketer</option>
+      <option value="staff">Staff</option>
+      <option value="manager">Manager</option>
+    </select>
+
+    <button type="submit">Create User</button>
+  </form>
+
+  <table id="usersTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
 </body>
+<footer>
+  <p>&copy; 2026 School CRM | Powered by Jendie Automobiles Ltd</p>
+  <p>Contact: jendietrackmykid@gmail.com | +254 723 77 52 89</p>
+</footer>
 </html>
