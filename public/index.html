@@ -75,28 +75,37 @@
   </div>
 
 <script>
+  const API_BASE =
+    window.location.hostname === "localhost"
+      ? "http://localhost:5000"
+      : "https://school-crm-sndl.onrender.com"; // ← replace with your real Render backend URL
+
   document.getElementById('leadForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
 
-    // ✅ Include JWT token in Authorization header
+    const formData = new FormData(e.target);
     const token = localStorage.getItem('jwtToken');
 
-    const response = await fetch('http://localhost:5000/api/leads', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      },
-      body: formData
-    });
+    try {
+      const response = await fetch(`${API_BASE}/api/leads`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        body: formData
+      });
 
-    if (response.ok) {
-      // ✅ Show success confirmation before redirect
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText);
+      }
+
       alert('🎉 Lead submitted successfully!');
       window.location.href = "success.html";
-    } else {
-      const errorText = await response.text();
-      alert('Error submitting lead: ' + errorText);
+
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Error submitting lead. Please try again.");
     }
   });
 
