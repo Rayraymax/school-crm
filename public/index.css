@@ -1,79 +1,200 @@
-/* General Layout */
+/* ===================================================
+   SCHOOL CRM FORM – PREMIUM SAAS STYLE
+   Matches Dashboard Design System
+=================================================== */
+
+/* ---------- Root Variables ---------- */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #4f46e5;
+  --bg-soft: #f4f7fb;
+  --card-bg: #ffffff;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --border-light: #e5e7eb;
+}
+
+/* ---------- Body ---------- */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
+  background: linear-gradient(135deg, #f4f7fb, #e9eff7);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  color: var(--text-main);
+  font-size: 18px;
+  line-height: 1.6;
+  padding: 10px; /* for mobile spacing */
 }
 
-/* Form Container */
+/* ---------- Form Container ---------- */
 .lead-container {
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  width: 400px;
+  background: var(--card-bg);
+  padding: 30px 35px;
+  border-radius: 18px;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.06),
+    0 8px 20px rgba(0,0,0,0.04);
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
 }
 
+/* Form Header */
 .lead-container h1 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  color: #007BFF;
   text-align: center;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 25px;
 }
 
-/* Inputs & Selects */
+/* ---------- Inputs, Selects & Textarea ---------- */
 .lead-container input,
 .lead-container select,
 .lead-container textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px 14px;
   margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+  background-color: #f9fafb;
+  box-sizing: border-box;
 }
 
-/* Button */
-.lead-container button {
+.lead-container textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.lead-container input:focus,
+.lead-container select:focus,
+.lead-container textarea:focus {
+  border-color: var(--primary-dark);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+  outline: none;
+}
+
+/* ---------- Checkboxes ---------- */
+.services-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.services-checkboxes label {
+  background: #eef2ff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.services-checkboxes label:hover {
+  background: #dbeafe;
+}
+
+/* ---------- Buttons ---------- */
+.lead-container button[type="submit"] {
   width: 100%;
-  padding: 10px;
-  background: #007BFF;
+  padding: 12px 20px;
+  margin-top: 12px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.lead-container button:hover {
-  background: #0056b3;
+.lead-container button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.25);
 }
-/* Back to Dashboard Button */
+
+/* Back Buttons */
 .lead-container button[type="button"] {
+  width: 100%;
+  padding: 10px;
   margin-top: 10px;
-  background: #6c757d; /* grey */
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.lead-container button[type="button"]:hover {
-  background: #5a6268;
+/* Grey Back Button */
+.lead-container button[type="button"]:first-of-type {
+  background: #6b7280;
+  color: white;
 }
-/* Back to Login Button */
+
+.lead-container button[type="button"]:first-of-type:hover {
+  background: #4b5563;
+}
+
+/* Green Back Button */
 .lead-container button[type="button"]:last-of-type {
-  margin-top: 10px;
-  background: #28a745; /* green */
+  background: #16a34a;
+  color: white;
 }
 
 .lead-container button[type="button"]:last-of-type:hover {
-  background: #218838;
+  background: #15803d;
 }
+
+/* ---------- School Type Container ---------- */
+#schoolTypeContainer {
+  transition: all 0.3s ease;
+  margin-bottom: 8px;
+}
+
+/* ---------- Footer ---------- */
 footer {
-  background: #007BFF;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
   color: #fff;
   text-align: center;
   padding: 12px;
-  font-size: 14px;
+  font-size: 17px;
+  border-radius: 0 0 18px 18px;
   margin-top: 20px;
+}
+
+/* ================== Responsive Design ================== */
+
+/* Mobile adjustments */
+@media (max-width: 500px) {
+  body {
+    padding: 15px;
+  }
+
+  .lead-container {
+    padding: 20px 20px;
+  }
+
+  .services-checkboxes {
+    flex-direction: column;
+  }
+
+  .lead-container input,
+  .lead-container select,
+  .lead-container textarea {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .lead-container button[type="submit"],
+  .lead-container button[type="button"] {
+    padding: 10px;
+    font-size: 17px;
+  }
 }

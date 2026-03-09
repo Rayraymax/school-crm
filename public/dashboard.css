@@ -1,245 +1,483 @@
-/* General Layout */
+/* ===================================================
+   SCHOOL CRM DASHBOARD – PREMIUM SAAS STYLE
+   Full polished UI
+=================================================== */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #4f46e5;
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+  --info: #0ea5e9;
+  --bg-soft: #f4f7fb;
+  --card-bg: #ffffff;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --border-light: #e5e7eb;
+}
+
+/* ----------------- Body ----------------- */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  background-color: #f4f7fb; /* light background */
-  color: #333;
-  font-size: 18px; /* larger base font size */
+  background: linear-gradient(135deg, #f4f7fb, #e9eff7);
+  color: var(--text-main);
+  font-size: 18px;
   line-height: 1.6;
 }
 
-/* Top Bar */
+/* ----------------- Header ----------------- */
 header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  background: linear-gradient(90deg, #007BFF, #00C6FF);
+  text-align: center;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
   color: white;
-  padding: 18px 30px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  padding: 25px 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 header h1 {
-  margin: 0;
-  font-size: 24px;
-  letter-spacing: 0.5px;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+header p {
+  margin: 0 0 15px 0;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 header button {
-  margin-left: 10px;
-  padding: 10px 16px;
-  background: linear-gradient(90deg, #ffffff, #e6e6e6);
-  color: #007BFF;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: transform 0.2s ease, background 0.3s ease;
-}
-
-header button:hover {
-  background: linear-gradient(90deg, #f0f0f0, #dcdcdc);
-  transform: scale(1.05);
-}
-
-/* Sections */
-section {
-  margin: 20px;
-  background: #fff;
-  padding: 22px;
+  margin-top: 8px;
+  padding: 8px 18px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* Table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background: #fff;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: left;
-  font-size: 16px;
-}
-
-th {
-  background: linear-gradient(90deg, #007BFF, #00C6FF);
-  color: #fff;
-  font-size: 17px;
-}
-
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tr:hover {
-  background-color: #e6f0ff;
-  transition: background 0.3s ease;
-}
-
-/* Buttons */
-button {
-  cursor: pointer;
-  padding: 10px 16px;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,123,255,0.3);
-}
-
-/* Pagination */
-.pagination {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.pagination button {
-  margin: 2px;
-  padding: 10px 16px;
-  background: linear-gradient(90deg, #007BFF, #00C6FF);
-  color: white;
   border: none;
-  border-radius: 4px;
-}
-
-.pagination button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-/* Form Section */
-.form-section {
-  margin-top: 20px;
-  padding: 18px;
-  border: 1px solid #ddd;
-  background: #fdfdfd;
-}
-
-/* Compact Grid Layout for Form */
-.form-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.form-grid input,
-.form-grid select,
-.form-grid textarea,
-.form-grid button {
-  flex: 1 1 240px;
-  min-width: 200px;
-  padding: 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 17px; /* enlarged text */
-  background: #fff;
-  color: #333;
+  background: white;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-/* Textarea Styling */
-.form-grid textarea {
-  flex: 1 1 100%;
+header button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+header .filters {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+header .filters > * {
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+header .filters button {
+  background: var(--success);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+header .filters button:hover {
+  background: #15803d;
+}
+
+/* Responsive filters */
+@media (max-width: 768px) {
+  header .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header .filters > * {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* ----------------- Section Card ----------------- */
+.form-section {
+  margin: 35px auto;
+  max-width: 1200px;
+  padding: 30px;
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.06),
+    0 8px 20px rgba(0,0,0,0.04);
+}
+
+.form-section h3 {
+  margin-bottom: 25px;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  background-color: #f9fafb;
+  font-size: 18px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.form-section textarea {
   min-height: 120px;
   resize: vertical;
 }
 
-/* Glowing Focus Effect */
-.form-grid input:focus,
-.form-grid select:focus,
-.form-grid textarea:focus {
-  border-color: #007BFF;
-  box-shadow: 0 0 12px rgba(0, 123, 255, 0.7);
+.form-section input:focus,
+.form-section select:focus,
+.form-section textarea:focus {
+  border-color: var(--primary-dark);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(79,70,229,0.12);
   outline: none;
 }
 
-/* File Upload Styling */
-#lead_image {
-  padding: 10px;
-  background: #f9f9f9;
-  border: 1px dashed #007BFF;
+/* Services checkboxes */
+.services-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.services-checkboxes label {
+  background: #eef2ff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.services-checkboxes label:hover {
+  background: #dbeafe;
+}
+
+/* Submit Button */
+.form-section button[type="submit"] {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.form-section button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.25);
+}
+
+/* ----------------- Tables ----------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  font-size: 18px;
+}
+
+th {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 14px;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-main);
+}
+
+tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+tr:hover {
+  background-color: #eef2ff;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.status-interested { background: var(--success); }
+.status-followup { background: var(--warning); color: #000; }
+.status-notinterested { background: var(--danger); }
+.status-call { background: var(--info); }
+.status-email { background: #7c3aed; }
+.status-meeting { background: #f97316; }
+.status-demo { background: #10b981; }
+.status-other { background: #6b7280; }
+
+/* Delete Buttons */
+td button {
+  background: #ef4444;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+td button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239,68,68,0.3);
+}
+
+/* ----------------- Manager Section ----------------- */
+#managerSection {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+#managerSection button {
+  background: linear-gradient(90deg, var(--success), #15803d);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#managerSection button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ----------------- Modals ----------------- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 16px;
+  width: 420px;
+  max-width: 95%;
+  font-size: 16px;
+}
+
+.close {
+  float: right;
+  font-size: 22px;
+  font-weight: bold;
   cursor: pointer;
 }
 
-#lead_image:hover {
-  background: #e6f0ff;
+/* ----------------- Follow-ups Panel ----------------- */
+#followUpsSection {
+  position: fixed;
+  top: 140px;
+  right: 30px;
+  width: 380px;
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  font-size: 15px;
+  z-index: 200;
 }
 
-/* Buttons inside Form */
-.form-grid button[type="submit"] {
-  background: linear-gradient(90deg, #007BFF, #00C6FF);
+#followUpsSection h3 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+#followUpsSection input,
+#followUpsSection button {
+  font-size: 15px;
+  padding: 6px 10px;
+  margin-right: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+#followUpsSection button {
+  background: var(--primary);
   color: white;
+  border: none;
 }
 
-.form-grid button[type="submit"]:hover {
-  background: linear-gradient(90deg, #0056b3, #0096c7);
+#followUpsSection button:hover {
+  background: var(--primary-dark);
 }
 
-.form-grid button#deleteLeadBtn {
-  background: linear-gradient(90deg, #dc3545, #ff6b6b);
+/* Follow-ups List */
+#followUpsList li {
+  margin-bottom: 10px;
+  padding: 6px 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+  background: #25D366;
   color: white;
-}
-
-.form-grid button#deleteLeadBtn:hover {
-  background: linear-gradient(90deg, #a71d2a, #e63946);
-}
-
-/* Table Row Highlighting by Interest Level */
-tr.interested { background-color: #d4edda; }
-tr.followup { background-color: #fff3cd; }
-tr.contacted { background-color: #cce5ff; }
-tr.meeting { background-color: #e2e3ff; }
-tr.closed { background-color: #d1ecf1; }
-tr.pending { background-color: #fefefe; }
-tr.notinterested { background-color: #f8d7da; }
-
-/* Responsive Table for Mobile */
-@media (max-width: 768px) {
-  table, thead, tbody, th, td, tr {
-    display: block;
-  }
-
-  thead tr {
-    display: none;
-  }
-
-  tr {
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 12px;
-    background: #fff;
-  }
-
-  td {
-    border: none;
-    padding: 10px;
-    text-align: left;
-    position: relative;
-    font-size: 16px;
-  }
-
-  td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    display: block;
-    margin-bottom: 4px;
-    color: #007BFF;
-  }
-}
-footer {
-  background: #007BFF;
-  color: #fff;
-  text-align: center;
-  padding: 12px;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 6px;
+  cursor: pointer;
   font-size: 14px;
-  margin-top: 20px;
+  margin-left: 6px;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebc5a;
+}
+
+/* ----------------- Footer ----------------- */
+footer {
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: white;
+  font-size: 16px;
+}
+/* ----------------- FOLLOW-UPS CARD (TOP-LEFT) ----------------- */
+#followUpsCard {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 300px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 18px 20px;
+  border-radius: 16px;
+  cursor: pointer;
+  z-index: 250;
+  box-shadow: 0 12px 20px rgba(0,0,0,0.25);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#followUpsCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 25px rgba(0,0,0,0.3);
+}
+
+#followUpsCard h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#followUpsCard div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#followUpsCount {
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  padding: 8px 14px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Date Picker inside card */
+#followUpsCard input[type="date"] {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Buttons inside card */
+#followUpsCard button {
+  flex: 1;
+  margin-top: 10px;
+  margin-right: 5px;
+  padding: 6px 0;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#followUpsCard button:last-child {
+  margin-right: 0;
+}
+
+#showFollowUpsBtn {
+  background: #10b981; /* green accent */
+  color: white;
+}
+
+#showFollowUpsBtn:hover {
+  background: #059669;
+}
+
+#resetFollowUpsBtn {
+  background: #fbbf24; /* yellow accent */
+  color: #111827;
+}
+
+#resetFollowUpsBtn:hover {
+  background: #f59e0b;
 }

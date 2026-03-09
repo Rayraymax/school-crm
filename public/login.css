@@ -1,50 +1,129 @@
-/* General Layout */
+/* ===================================================
+   SCHOOL CRM LOGIN – PREMIUM SAAS DESIGN
+   Clean • Modern • Confident • Professional
+=================================================== */
+
+/* ----------------- Body ----------------- */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
   margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f4f7fb, #e9eff7);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-/* Login Card */
+/* ----------------- Login Card ----------------- */
 .login-container {
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  width: 300px;
-  text-align: center;
+  background: #ffffff;
+  padding: 45px 40px;
+  border-radius: 18px;
+  width: 400px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    0 8px 20px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
 }
 
+/* subtle top accent line */
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+}
+
+/* hover lift effect */
+.login-container:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.12),
+    0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* ----------------- Headings ----------------- */
 .login-container h1 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  color: #007BFF;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: #111827;
 }
 
-/* Form Inputs */
+.login-container p {
+  margin: 8px 0 30px 0;
+  font-size: 18px;
+  color: #6b7280;
+}
+
+/* ----------------- Labels ----------------- */
+.login-container label {
+  font-size: 18px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  margin-top: 18px;
+  color: #374151;
+}
+
+/* ----------------- Inputs ----------------- */
 .login-container input {
-  width: 90%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background-color: #f9fafb;
+  font-size: 18px;
+  transition: all 0.3s ease;
 }
 
-/* Button */
+.login-container input::placeholder {
+  color: #9ca3af;
+}
+
+.login-container input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+}
+
+/* ----------------- Button ----------------- */
 .login-container button {
   width: 100%;
-  padding: 10px;
-  background: #007BFF;
-  color: white;
+  padding: 14px;
+  margin-top: 30px;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
   cursor: pointer;
+  letter-spacing: 0.4px;
+  transition: all 0.3s ease;
 }
 
 .login-container button:hover {
-  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+}
+
+.login-container button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ----------------- Subtle Footer Text ----------------- */
+.footer-text {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 18px;
+  color: #9ca3af;
 }

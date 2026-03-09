@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>School CRM - Submit Lead</title>
+  <title>CRM - Submit Lead</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <div class="lead-container">
-    <h1>Submit School Lead</h1>
+    <h1>Submit New Lead</h1>
     <form id="leadForm">
-      <label>School Name:</label>
-      <input type="text" name="school_name" placeholder="School Name" required>
-
-      <label>School Type:</label>
-      <select name="school_type">
+      <!-- Lead Type -->
+      <label>Lead Type:</label>
+      <select name="lead_type" id="leadType" required>
         <option value="">--Select--</option>
-        <option value="Primary">Primary</option>
-        <option value="Secondary">Secondary</option>
-        <option value="Private">Private</option>
-        <option value="Public">Public</option>
-        <option value="Other">Other</option>
+        <option value="School">School</option>
+        <option value="Firm">Firm / Corporate</option>
+        <option value="Individual">Individual</option>
       </select>
+
+      <!-- School Type (shown only if Lead Type = School) -->
+      <div id="schoolTypeContainer">
+        <label>School Type:</label>
+        <select name="school_type">
+          <option value="">--Select--</option>
+          <option value="Primary">Primary</option>
+          <option value="Secondary">Secondary</option>
+          <option value="Private">Private</option>
+          <option value="Public">Public</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
 
       <input type="text" name="location" placeholder="Location">
       <input type="text" name="contact_name" placeholder="Contact Name">
@@ -42,12 +51,23 @@
       <input type="date" name="visit_date">
 
       <label>Interest Level:</label>
-      <select name="interest_level">
+      <select name="interest_level" required>
         <option value="">--Select--</option>
         <option value="Interested">Interested</option>
         <option value="Needs Follow-up">Needs Follow-up</option>
         <option value="Not Interested">Not Interested</option>
       </select>
+
+      <label>Services of Interest (tick all that apply):</label>
+      <div class="services-checkboxes">
+        <label><input type="checkbox" name="services" value="Speed Governors"> Speed Governors</label>
+        <label><input type="checkbox" name="services" value="Trackers"> Trackers</label>
+        <label><input type="checkbox" name="services" value="Insurance"> Insurance</label>
+        <label><input type="checkbox" name="services" value="Dashcams"> Dashcams</label>
+        <label><input type="checkbox" name="services" value="CCTV"> CCTV</label>
+        <label><input type="checkbox" name="services" value="Fuel Management"> Fuel Management</label>
+        <label><input type="checkbox" name="services" value="TrackMyKid"> TrackMyKid</label>
+      </div>
 
       <textarea name="notes" placeholder="Notes"></textarea>
 
@@ -75,14 +95,30 @@
   </div>
 
 <script>
+  // Show/hide School Type based on Lead Type
+  const leadTypeSelect = document.getElementById('leadType');
+  const schoolTypeContainer = document.getElementById('schoolTypeContainer');
+
+  leadTypeSelect.addEventListener('change', () => {
+    if (leadTypeSelect.value === 'School') {
+      schoolTypeContainer.style.display = 'block';
+    } else {
+      schoolTypeContainer.style.display = 'none';
+    }
+  });
+
+  // Default hide school type if not School
+  if (leadTypeSelect.value !== 'School') {
+    schoolTypeContainer.style.display = 'none';
+  }
+
   const API_BASE =
     window.location.hostname === "localhost"
       ? "http://localhost:5000"
-      : "https://school-crm-sndl.onrender.com"; // ← replace with your real Render backend URL
+      : "https://school-crm-sndl.onrender.com";
 
   document.getElementById('leadForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-
     const formData = new FormData(e.target);
     const token = localStorage.getItem('jwtToken');
 
@@ -102,7 +138,6 @@
 
       alert('🎉 Lead submitted successfully!');
       window.location.href = "success.html";
-
     } catch (error) {
       console.error("Submission error:", error);
       alert("Error submitting lead. Please try again.");

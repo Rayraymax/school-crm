@@ -22,13 +22,13 @@ body {
 /* Header */
 .success-container h1 {
   color: #28a745; /* green */
-  font-size: 24px;
+  font-size: 26px;
   margin-bottom: 15px;
 }
 
 /* Paragraph */
 .success-container p {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 20px;
 }
 

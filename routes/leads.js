@@ -15,9 +15,11 @@ function authorizeRoles(...allowedRoles) {
     }
     next();
   };
-};
+}
 
-// Submit new lead (only marketers and managers)
+// ----------------------
+// Submit new lead
+// ----------------------
 router.post(
   '/',
   authMiddleware,
@@ -25,10 +27,8 @@ router.post(
   upload.single('lead_image'),
   async (req, res) => {
     try {
-      // ✅ Multer populates req.body and req.file
       const {
-        school_name,
-        school_type,
+        lead_type,
         location,
         contact_name,
         contact_role,
@@ -38,18 +38,23 @@ router.post(
         interest_level,
         notes,
         next_action,
-        follow_up_date
+        follow_up_date,
+        services
       } = req.body;
 
+      const servicesArray = services
+        ? Array.isArray(services)
+          ? services
+          : [services]
+        : [];
       const imagePath = req.file ? req.file.filename : null;
 
       const result = await pool.query(
-        `INSERT INTO school_leads 
-        (school_name, school_type, location, contact_name, contact_role, phone, email, visit_date, interest_level, notes, next_action, follow_up_date, image_path, created_at) 
-        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,NOW()) RETURNING *`,
+        `INSERT INTO school_leads
+        (lead_type, location, contact_name, contact_role, phone, email, visit_date, interest_level, notes, next_action, follow_up_date, image_path, submitted_by_id, services, created_at)
+        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,NOW()) RETURNING *`,
         [
-          school_name,
-          school_type,
+          lead_type,
           location,
           contact_name,
           contact_role,
@@ -60,7 +65,9 @@ router.post(
           notes,
           next_action,
           follow_up_date,
-          imagePath
+          imagePath,
+          req.user.id,
+          servicesArray
         ]
       );
 
@@ -71,13 +78,64 @@ router.post(
     }
   }
 );
-// Get all leads (any authenticated user)
+
+// ----------------------
+// Get leads
+// ----------------------
 router.get('/', authMiddleware, async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM school_leads ORDER BY created_at DESC");
-    res.json(result.rows);   // ✅ return JSON array
+    let query = `
+      SELECT l.*, u.username AS submitted_by
+      FROM school_leads l
+      LEFT JOIN users u ON l.submitted_by_id = u.id
+      ORDER BY l.created_at DESC
+    `;
+    let params = [];
+
+    // Marketers only see their leads
+    if (req.user.role === 'marketer') {
+      query = `
+        SELECT l.*, u.username AS submitted_by
+        FROM school_leads l
+        LEFT JOIN users u ON l.submitted_by_id = u.id
+        WHERE l.submitted_by_id = $1
+        ORDER BY l.created_at DESC
+      `;
+      params = [req.user.id];
+    }
+
+    const result = await pool.query(query, params);
+    res.json(result.rows);
   } catch (err) {
     console.error('Error fetching leads:', err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// ----------------------
+// Delete lead by ID
+// ----------------------
+router.delete('/:id', authMiddleware, async (req, res) => {
+  try {
+    const leadId = parseInt(req.params.id);
+
+    // Only managers can delete
+    if (req.user.role !== 'manager') {
+      return res.status(403).json({ error: 'Forbidden: only managers can delete leads' });
+    }
+
+    const result = await pool.query(
+      'DELETE FROM school_leads WHERE id = $1 RETURNING *',
+      [leadId]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Lead not found' });
+    }
+
+    res.json({ message: 'Lead deleted successfully ✅' });
+  } catch (err) {
+    console.error('Error deleting lead:', err);
     res.status(500).send('Server error');
   }
 });
