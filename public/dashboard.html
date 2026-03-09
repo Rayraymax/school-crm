@@ -41,33 +41,38 @@ border:1px solid #ccc;
 border-radius:8px;
 }
 
-#followUpsCard{
-position:fixed;
-top:20px;
-left:20px;
-width:260px;
-background:#28a745;
-color:white;
-padding:20px;
-border-radius:15px;
-cursor:pointer;
-z-index:200;
-box-shadow:0 6px 10px rgba(0,0,0,0.3);
+#followUpsCard {
+    position: fixed;       /* keep it fixed on screen */
+    top: 20px;             /* distance from top */
+    right: 20px;           /* move from left to right */
+    width: 260px;
+    background: #28a745;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    z-index: 200;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.3);
 }
 
-#followUpsPanel{
-display:none;
-position:fixed;
-top:150px;
-left:20px;
-width:320px;
-max-height:450px;
-overflow-y:auto;
-background:#f8f9fa;
-padding:15px;
-border-radius:12px;
-box-shadow:0 6px 12px rgba(0,0,0,0.25);
-z-index:200;
+/* Optional: also make the follow-ups panel appear near it */
+#followUpsCard {
+    position: fixed;
+    top: 0px;          /* push it below the header */
+    right: 0px;
+    width: 180px;
+    background: #28a745;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 200;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+#followUpsCard:hover {
+    transform: translateY(-5px);
 }
 
 #followUpsPanel ul{
@@ -110,46 +115,42 @@ margin-bottom:10px;
 <h4>Follow-Ups</h4>
 <ul id="followUpsList"></ul>
 </div>
-
-<header>
-
-<h1>Office Dashboard</h1>
-<p>Logged in as: <span id="userRole"></span></p>
-<button onclick="logout()">Logout</button>
-
-<div class="filters">
-
-<input type="text" id="searchName" placeholder="Search by Lead Type or Contact Name">
-
-<select id="filterInterest">
-<option value="">Filter by Interest Level</option>
-<option value="Interested">Interested</option>
-<option value="Needs Follow-up">Needs Follow-up</option>
-<option value="Not Interested">Not Interested</option>
-</select>
-
-<select id="filterAction">
-<option value="">Filter by Next Action</option>
-<option>Call</option>
-<option>Email</option>
-<option>Meeting</option>
-<option>Demo</option>
-<option>Other</option>
-</select>
-
-<label>Visit Date</label>
-<input type="date" id="filterVisitDate">
-
-<select id="filterMarketer">
-<option value="">Filter by Marketer</option>
-</select>
-
-<button onclick="filterLeads()">Apply Filters</button>
-<button onclick="resetFilters()">Reset</button>
-<button onclick="exportCSV()">Export to CSV</button>
-
+<!-- Fixed logo top-left -->
+<div class="logo-container">
+  <img src="/school-crm-logo.png" alt="School CRM Logo" class="logo-img">
+  <span class="logo-text">School CRM</span>
 </div>
 
+<header>
+<h1>Office Dashboard</h1>
+ <p>Logged in as: <span id="userRole"></span></p>
+  <button onclick="logout()">Logout</button>
+
+  <div class="filters">
+    <input type="text" id="searchName" placeholder="Search by Lead Type or Contact Name">
+    <select id="filterInterest">
+      <option value="">Filter by Interest Level</option>
+      <option>Interested</option>
+      <option>Needs Follow-up</option>
+      <option>Not Interested</option>
+    </select>
+    <select id="filterAction">
+      <option value="">Filter by Next Action</option>
+      <option>Call</option>
+      <option>Email</option>
+      <option>Meeting</option>
+      <option>Demo</option>
+      <option>Other</option>
+    </select>
+    <label>Visit Date</label>
+    <input type="date" id="filterVisitDate">
+    <select id="filterMarketer">
+      <option value="">Filter by Marketer</option>
+    </select>
+    <button onclick="filterLeads()">Apply Filters</button>
+    <button onclick="resetFilters()">Reset</button>
+    <button onclick="exportCSV()">Export to CSV</button>
+  </div>
 </header>
 
 <div id="addLeadButtonContainer" style="display:none;margin:20px">
