@@ -323,11 +323,14 @@ td button:hover {
 /* ----------------- Follow-ups Panel & Card (TOP-RIGHT) ----------------- */
 #followUpsCard {
   position: absolute;
+  top: 20px; /* lower it a bit so it doesn’t overlap filters */
+  right: 0px; /* keep it aligned to the right */
   left: auto;
-  width: 300px;
+  height: 180px;
+  width: 220px;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
-  padding: 18px 20px;
+  padding: 14px 16px;
   border-radius: 16px;
   cursor: pointer;
   z-index: 250;
@@ -343,7 +346,7 @@ td button:hover {
 
 #followUpsCard h3 {
   margin: 0 0 12px 0;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   text-align: center;
 }
