@@ -346,7 +346,7 @@ td button:hover {
 
 #followUpsCard h3 {
   margin: 0 0 12px 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   text-align: center;
 }
@@ -362,7 +362,7 @@ td button:hover {
   color: white;
   border-radius: 50%;
   padding: 8px 14px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   text-align: center;
 }
@@ -373,7 +373,7 @@ td button:hover {
   border-radius: 8px;
   border: none;
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 #followUpsCard button {
@@ -414,7 +414,7 @@ td button:hover {
 #followUpsPanel {
   display: none;
   position: absolute;       /* change from relative to absolute */
-  top: 10%;                /* directly below its container */
+  top: 0%;                /* directly below its container */
   right: 0;                  /* align with modal’s left edge */
   width: 10%;              /* optional: same width as modal */
   max-height: 450px;
@@ -428,7 +428,7 @@ td button:hover {
 
 #followUpsPanel h4 {
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 14px;
   text-align: center;
 }
 
@@ -448,7 +448,7 @@ td button:hover {
   margin-top: 0px;
   margin-right: 7px;
   padding: 5px 8px;
-  font-size: 14px;
+  font-size: 12px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
