@@ -322,7 +322,7 @@ td button:hover {
 
 /* ----------------- Follow-ups Panel & Card (TOP-RIGHT) ----------------- */
 #followUpsCard {
-  position: fixed;
+  position: relative;
   top: 20px;
   right: 20px;
   left: auto;
@@ -412,11 +412,11 @@ td button:hover {
 
 #followUpsPanel {
   display: none;
-  position: fixed;
-  top: 80px;
+  position: absolute;
+  top: 20px;
   right: 20px;
   left: auto;
-  width: 380px;
+  width: 350px;
   max-height: 450px;
   overflow-y: auto;
   background: var(--card-bg);
@@ -483,7 +483,7 @@ footer {
 }
 /* Logo fixed top-left */
 .logo-container {
-  position: fixed;
+  position: absolute;
   top: 20px;      /* align vertically with follow-ups */
   left: 20px;
   display: flex;
@@ -496,7 +496,7 @@ footer {
 }
 
 .logo-img {
-  height: 150px;  /* keeps it proportional */
+  height: 100px;  /* keeps it proportional */
   width: auto;
   border-radius: 8px;
 }
