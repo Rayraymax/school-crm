@@ -420,7 +420,7 @@ td button:hover {
   max-height: 450px;
   overflow-y: auto;
   background: var(--card-bg);
-  padding: 18px;
+  padding: 14px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
   z-index: 200;
