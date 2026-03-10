@@ -322,7 +322,7 @@ td button:hover {
 
 /* ----------------- Follow-ups Panel & Card (TOP-RIGHT) ----------------- */
 #followUpsCard {
-  position: relative;
+  position: absolute;
   left: auto;
   width: 300px;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -410,8 +410,10 @@ td button:hover {
 
 #followUpsPanel {
   display: none;
-  position: relative;
-  width: 350px;
+  position: absolute;       /* change from relative to absolute */
+  top: 10%;                /* directly below its container */
+  right: 0;                  /* align with modal’s left edge */
+  width: 10%;              /* optional: same width as modal */
   max-height: 450px;
   overflow-y: auto;
   background: var(--card-bg);
