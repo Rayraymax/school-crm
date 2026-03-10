@@ -323,8 +323,6 @@ td button:hover {
 /* ----------------- Follow-ups Panel & Card (TOP-RIGHT) ----------------- */
 #followUpsCard {
   position: relative;
-  top: 20px;
-  right: 20px;
   left: auto;
   width: 300px;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -412,10 +410,7 @@ td button:hover {
 
 #followUpsPanel {
   display: none;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  left: auto;
+  position: relative;
   width: 350px;
   max-height: 450px;
   overflow-y: auto;
