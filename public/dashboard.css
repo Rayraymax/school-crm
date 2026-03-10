@@ -323,7 +323,7 @@ td button:hover {
 /* ----------------- Follow-ups Panel & Card (TOP-RIGHT) ----------------- */
 #followUpsCard {
   position: absolute;
-  top: 60px; /* lower it a bit so it doesn’t overlap filters */
+  top: 0px; /* lower it a bit so it doesn’t overlap filters */
   right: 0px; /* keep it aligned to the right */
   left: auto;
   height: 180px;
