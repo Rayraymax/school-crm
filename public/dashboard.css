@@ -427,7 +427,7 @@ td button:hover {
 }
 
 #followUpsPanel h4 {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   font-size: 18px;
   text-align: center;
 }
@@ -445,8 +445,8 @@ td button:hover {
 }
 
 #followUpsPanel a button {
-  margin-top: 4px;
-  margin-right: 6px;
+  margin-top: 0px;
+  margin-right: 7px;
   padding: 5px 8px;
   font-size: 14px;
   border-radius: 6px;
