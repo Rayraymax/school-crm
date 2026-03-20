@@ -8,6 +8,8 @@ const usersRoutes = require('./routes/users');
 
 const app = express();
 
+app.use(express.json());
+
 // -------------------------
 // Middleware
 // -------------------------
